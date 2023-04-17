@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { EmpleadosModule } from './empleados/empleados.module';
+import { EmployeesModule } from './employees/employees.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import * as dotenv from 'dotenv';
+import {Employee} from "./employees/employee.entity";
 
 dotenv.config();
 
@@ -16,10 +17,10 @@ dotenv.config();
           username: process.env.DB_USER,
           password: process.env.DB_PASSWORD,
           database: 'fichajes_app',
-          entities: [__dirname + '**/*.entity{.ts, .js}'],
+          entities: [Employee],
           synchronize: true
       }),
-      EmpleadosModule
+      EmployeesModule
   ],
   controllers: [AppController],
   providers: [AppService],
