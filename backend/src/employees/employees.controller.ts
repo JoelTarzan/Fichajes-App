@@ -1,6 +1,7 @@
-import {Body, Controller, Post} from '@nestjs/common';
+import {Body, Controller, Get, Post} from '@nestjs/common';
 import {CreateEmployeeDto} from "./dto/create-employee.dto";
 import {EmployeesService} from "./employees.service";
+import {Employee} from "./employee.entity";
 
 @Controller('employees')
 export class EmployeesController {
@@ -8,9 +9,13 @@ export class EmployeesController {
     constructor(private employeesService: EmployeesService) {
     }
 
-    @Post()
-    createEmployee(@Body() newEmployee: CreateEmployeeDto) {
-        return this.employeesService.createEmployee(newEmployee);
+    @Get()
+    getEmployees(): Promise<Employee[]> {
+        return this.employeesService.getEmployees();
     }
 
+    @Post()
+    createEmployee(@Body() newEmployee: CreateEmployeeDto): Promise<Employee> {
+        return this.employeesService.createEmployee(newEmployee);
+    }
 }

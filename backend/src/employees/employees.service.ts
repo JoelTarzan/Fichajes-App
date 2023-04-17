@@ -13,6 +13,10 @@ export class EmployeesService {
     ) {
     }
 
+    getEmployees() {
+        return this.employeeRepository.find();
+    }
+
     createEmployee(employee: CreateEmployeeDto) {
         const newEmployee = this.employeeRepository.create(employee);
         return this.employeeRepository.save(newEmployee);
