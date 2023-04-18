@@ -22,12 +22,16 @@ export class EmployeesService {
             where: {
                 id
             }
-        })
+        });
     }
 
     createEmployee(employee: CreateEmployeeDto) {
         const newEmployee = this.employeeRepository.create(employee);
         return this.employeeRepository.save(newEmployee);
+    }
+
+    deleteEmployee(id: string) {
+        return this.employeeRepository.delete({ id });
     }
 
 }
