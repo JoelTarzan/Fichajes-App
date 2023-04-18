@@ -17,6 +17,14 @@ export class EmployeesService {
         return this.employeeRepository.find();
     }
 
+    getOneEmployee(id: string) {
+        return this.employeeRepository.findOne({
+            where: {
+                id
+            }
+        })
+    }
+
     createEmployee(employee: CreateEmployeeDto) {
         const newEmployee = this.employeeRepository.create(employee);
         return this.employeeRepository.save(newEmployee);

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post} from '@nestjs/common';
 import {CreateEmployeeDto} from "./dto/create-employee.dto";
 import {EmployeesService} from "./employees.service";
 import {Employee} from "./employee.entity";
@@ -12,6 +12,11 @@ export class EmployeesController {
     @Get()
     getEmployees(): Promise<Employee[]> {
         return this.employeesService.getEmployees();
+    }
+
+    @Get(':id')
+    getOneEmployee(@Param('id') id: string): Promise<Employee> {
+        return this.employeesService.getOneEmployee(id);
     }
 
     @Post()
