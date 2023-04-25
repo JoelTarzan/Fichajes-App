@@ -3,6 +3,7 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Employee} from "./employee.entity";
 import {Repository} from "typeorm";
 import {CreateEmployeeDto} from "./dto/create-employee.dto";
+import {UpdateEmployeeDto} from "./dto/update-employee.dto";
 
 @Injectable()
 export class EmployeesService {
@@ -34,4 +35,7 @@ export class EmployeesService {
         return this.employeeRepository.delete({ id });
     }
 
+    updateEmployee(id: string, employee: UpdateEmployeeDto) {
+        return this.employeeRepository.update({ id }, employee);
+    }
 }
