@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { EmployeesModule } from './employees/employees.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import * as dotenv from 'dotenv';
-import {Employee} from "./employees/employee.entity";
+import {Employee} from "./employees/entities/employee.entity";
 
 dotenv.config();
 

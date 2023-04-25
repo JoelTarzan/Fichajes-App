@@ -1,7 +1,7 @@
 import {Body, Controller, Delete, Get, Param, Patch, Post} from '@nestjs/common';
 import {CreateEmployeeDto} from "./dto/create-employee.dto";
 import {EmployeesService} from "./employees.service";
-import {Employee} from "./employee.entity";
+import {Employee} from "./entities/employee.entity";
 import {UpdateEmployeeDto} from "./dto/update-employee.dto";
 
 @Controller('employees')
