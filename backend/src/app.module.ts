@@ -5,6 +5,8 @@ import { EmployeesModule } from './employees/employees.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import * as dotenv from 'dotenv';
 import {Employee} from "./employees/entities/employee.entity";
+import { SchedulesModule } from './schedules/schedules.module';
+import {Schedule} from "./schedules/entities/schedule.entity";
 
 dotenv.config();
 
@@ -17,10 +19,11 @@ dotenv.config();
           username: process.env.DB_USER,
           password: process.env.DB_PASSWORD,
           database: 'fichajes_app',
-          entities: [Employee],
+          entities: [Employee, Schedule],
           synchronize: true
       }),
-      EmployeesModule
+      EmployeesModule,
+      SchedulesModule
   ],
   controllers: [AppController],
   providers: [AppService],
