@@ -7,6 +7,8 @@ import * as dotenv from 'dotenv';
 import {Employee} from "./employees/entities/employee.entity";
 import { SchedulesModule } from './schedules/schedules.module';
 import {Schedule} from "./schedules/entities/schedule.entity";
+import { RecordsModule } from './records/records.module';
+import {Record} from "./records/entities/record.entity";
 
 dotenv.config();
 
@@ -19,11 +21,12 @@ dotenv.config();
           username: process.env.DB_USER,
           password: process.env.DB_PASSWORD,
           database: 'fichajes_app',
-          entities: [Employee, Schedule],
+          entities: [Employee, Schedule, Record],
           synchronize: true
       }),
       EmployeesModule,
-      SchedulesModule
+      SchedulesModule,
+      RecordsModule
   ],
   controllers: [AppController],
   providers: [AppService],
