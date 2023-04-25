@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {Employee} from "./employee.entity";
 import {Repository} from "typeorm";
@@ -18,15 +18,33 @@ export class EmployeesService {
         return this.employeeRepository.find();
     }
 
-    getOneEmployee(id: string) {
-        return this.employeeRepository.findOne({
+    async getOneEmployee(id: string) {
+        const employeeFound = await this.employeeRepository.findOne({
             where: {
                 id
             }
         });
+
+        if (!employeeFound) {
+            throw new HttpException('Empleado no encontrado', HttpStatus.NOT_FOUND);
+        }
+
+        return employeeFound;
     }
 
-    createEmployee(employee: CreateEmployeeDto) {
+    async createEmployee(employee: CreateEmployeeDto) {
+
+        const employeeFound = await this.employeeRepository.findOne({
+          where: {
+              name: employee.name,
+              lastname: employee.lastname
+          }
+        });
+
+        if (employeeFound) {
+            throw new HttpException('El empleado ya existe', HttpStatus.CONFLICT);
+        }
+
         const newEmployee = this.employeeRepository.create(employee);
         return this.employeeRepository.save(newEmployee);
     }
