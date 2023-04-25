@@ -19,6 +19,7 @@ export class EmployeesService {
     }
 
     async getOneEmployee(id: string) {
+
         const employeeFound = await this.employeeRepository.findOne({
             where: {
                 id
@@ -49,11 +50,33 @@ export class EmployeesService {
         return this.employeeRepository.save(newEmployee);
     }
 
-    deleteEmployee(id: string) {
+    async deleteEmployee(id: string) {
+
+        const employeeFound = await this.employeeRepository.findOne({
+            where: {
+                id
+            }
+        });
+
+        if (!employeeFound) {
+            throw new HttpException('Empleado no encontrado', HttpStatus.NOT_FOUND);
+        }
+
         return this.employeeRepository.delete({ id });
     }
 
-    updateEmployee(id: string, employee: UpdateEmployeeDto) {
+    async updateEmployee(id: string, employee: UpdateEmployeeDto) {
+
+        const employeeFound = await this.employeeRepository.findOne({
+            where: {
+                id
+            }
+        });
+
+        if (!employeeFound) {
+            throw new HttpException('Empleado no encontrado', HttpStatus.NOT_FOUND);
+        }
+
         return this.employeeRepository.update({ id }, employee);
     }
 }
