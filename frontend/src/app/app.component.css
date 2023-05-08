@@ -1,0 +1,30 @@
+mat-toolbar {
+  background-color: #798777;
+  color: black;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+mat-sidenav {
+  width: 200px;
+  border-right: none;
+  background-color: #A2B29F;
+  color: white;
+  padding: 16px;
+  text-align: left;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.1rem;
+}
+
+mat-divider {
+  margin: 16px 0;
+  background-color: #798777;
+}

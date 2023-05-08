@@ -1,1 +1,43 @@
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Time Tracker App
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+
+    <button mat-button class="menu-button">
+      <mat-icon>people</mat-icon>
+      <span>Empleados</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>calendar_today</mat-icon>
+      <span>Calendario</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>calendar_view_day</mat-icon>
+      <span>Registros</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>schedule</mat-icon>
+      <span>Horarios</span>
+    </button>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
