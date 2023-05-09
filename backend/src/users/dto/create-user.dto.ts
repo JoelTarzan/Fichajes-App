@@ -3,6 +3,6 @@ export class CreateUserDto {
     lastname: string;
     email: string;
     password: string;
-    isAdmin: boolean;
+    isAdmin?: boolean;
     isSuperAdmin?: boolean;
 }
