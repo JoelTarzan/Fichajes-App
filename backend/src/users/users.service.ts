@@ -46,14 +46,15 @@ export class UsersService {
             throw new HttpException('El usuario ya existe', HttpStatus.CONFLICT);
         }
 
-        const adminExists = await this.userRepository.findOne({
+        const superAdminExists = await this.userRepository.findOne({
            where: {
                isSuperAdmin: true
            }
         });
 
-        if (!adminExists) {
+        if (!superAdminExists) {
             user.isSuperAdmin = true;
+            user.isAdmin = true;
         }
 
         const newUser = this.userRepository.create(user);
