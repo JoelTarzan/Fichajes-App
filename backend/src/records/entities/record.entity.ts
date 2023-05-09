@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import {Employee} from "../../employees/entities/employee.entity";
+import {User} from "../../users/entities/user.entity";
 
 @Entity('records')
 export class Record {
@@ -19,7 +19,7 @@ export class Record {
     @Column({nullable: true})
     breakTimeMinutes: number
 
-    @ManyToOne(() => Employee, employee => employee.records)
-    employee: Employee
+    @ManyToOne(() => User, user => user.records)
+    user: User
 
 }

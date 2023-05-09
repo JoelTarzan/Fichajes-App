@@ -48,12 +48,12 @@ export class UsersService {
 
         const adminExists = await this.userRepository.findOne({
            where: {
-               isAdmin: true
+               isSuperAdmin: true
            }
         });
 
         if (!adminExists) {
-            user.isAdmin = true;
+            user.isSuperAdmin = true;
         }
 
         const newUser = this.userRepository.create(user);
