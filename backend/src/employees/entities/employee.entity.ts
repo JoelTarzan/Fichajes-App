@@ -16,6 +16,9 @@ export class Employee {
     @Column()
     email: string
 
+    @Column()
+    password: string
+
     @Column({nullable: true})
     phone: string
 
