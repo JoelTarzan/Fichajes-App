@@ -3,6 +3,7 @@ export class UpdateUserDto {
     lastname?: string;
     email?: string;
     password?: string;
+    phone?: string;
     isAdmin?: boolean;
     isSuperAdmin?: boolean;
 }
