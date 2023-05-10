@@ -20,6 +20,11 @@ export class UsersController {
         return this.usersService.getOneUser(id);
     }
 
+    @Get('email/:email')
+    getOneUserByEmail(@Param('email') email: string): Promise<User> {
+        return this.usersService.getOneUserByEmail(email);
+    }
+
     @Post()
     createUser(@Body() newUser: CreateUserDto): Promise<User> {
         return this.usersService.createUser(newUser);

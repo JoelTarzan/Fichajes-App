@@ -34,6 +34,21 @@ export class UsersService {
         return userFound;
     }
 
+    async getOneUserByEmail(email: string) {
+
+        const userFound = await this.userRepository.findOne({
+            where: {
+                email
+            }
+        });
+
+        if (!userFound) {
+            throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
+        }
+
+        return userFound;
+    }
+
     async createUser(user: CreateUserDto | RegisterAuthDto) {
 
         const userFound = await this.userRepository.findOne({
