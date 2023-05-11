@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  superAdmin = false;
-  user = true;
+  endpoint: string = 'http://localhost:3000';
+  user = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  //TODO Metodos que hagan el login y el register, uno que compruebe si existe un super usuario, uno que compruebe si esta logueado
-  superAdminExists() {
-    return this.superAdmin;
+  //TODO Metodos que hagan el login y el register, uno que compruebe si esta logueado
+  async superAdminExists() {
+    return await this.http.get<boolean>(this.endpoint + '/auth/superadminexists').toPromise();
   }
 
   userLogged() {

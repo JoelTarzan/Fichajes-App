@@ -14,8 +14,11 @@ export class RegisterComponent implements OnInit {
     private router: Router) {
   }
 
-  ngOnInit() {
-    if (this.authService.superAdminExists()) {
+  async ngOnInit() {
+
+    const superAdminExists = await this.authService.superAdminExists();
+
+    if (superAdminExists) {
       this.router.navigate(['/login']);
     }
   }
