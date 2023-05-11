@@ -42,4 +42,8 @@ export class AuthService {
         return data;
     }
 
+    async superAdminExists() {
+        return await this.usersService.superAdminExists();
+    }
+
 }

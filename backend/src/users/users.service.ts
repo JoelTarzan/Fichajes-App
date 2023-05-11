@@ -107,4 +107,19 @@ export class UsersService {
         return this.userRepository.update({ id }, user);
     }
 
+    async superAdminExists() {
+
+        const superAdmin = await this.userRepository.findOne({
+           where: {
+               isSuperAdmin: true
+           }
+        });
+
+        if (superAdmin) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
