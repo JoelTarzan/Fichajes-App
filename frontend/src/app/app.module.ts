@@ -11,6 +11,8 @@ import {MatListModule} from "@angular/material/list";
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

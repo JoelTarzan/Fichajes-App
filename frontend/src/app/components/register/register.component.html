@@ -1,1 +1,30 @@
-<p>register works!</p>
+<div class="container">
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="register()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Ingrese su nombre">
+      <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="lastname" placeholder="Ingrese su apellido">
+      <mat-error *ngIf="form.get('lastname')?.hasError('required')">El apellido es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="email" placeholder="Ingrese su correo electrónico">
+      <mat-error *ngIf="form.get('email')?.hasError('required')">El correo electrónico es obligatorio</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Ingrese su contraseña">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">La contraseña es obligatoria</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="form.invalid" class="submitButton" [ngClass]="{'colorWhite': form.valid}">Registrarse</button>
+  </form>
+</div>
