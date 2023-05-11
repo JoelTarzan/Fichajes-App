@@ -12,9 +12,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  //TODO Metodos que hagan el login y el register, uno que compruebe si esta logueado
-  async superAdminExists() {
-    return await this.http.get<boolean>(this.endpoint + '/auth/superadminexists').toPromise();
+  //TODO Metodos que hagan el login y uno que compruebe si esta logueado
+  superAdminExists(): Observable<boolean> {
+    return this.http.get<boolean>(this.endpoint + '/auth/superadminexists');
   }
 
   userLogged() {

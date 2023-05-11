@@ -17,13 +17,15 @@ export class RegisterComponent implements OnInit {
     private router: Router) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
 
-    const superAdminExists = await this.authService.superAdminExists();
-
-    if (superAdminExists) {
-      this.router.navigate(['/login']);
-    }
+    this.authService.superAdminExists().subscribe(
+      (result) => {
+        if (result) {
+          this.router.navigate(['/login']);
+        }
+      }
+    );
 
     this.initForm();
   }
@@ -46,7 +48,8 @@ export class RegisterComponent implements OnInit {
     }
 
     this.authService.register(user).subscribe(
-     () => {this.router.navigate(['']);
+     () => {
+       this.router.navigate(['']);
      }
    );
   }
