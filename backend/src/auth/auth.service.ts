@@ -1,14 +1,16 @@
 import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {RegisterAuthDto} from "./dto/register-auth.dto";
 import {LoginAuthDto} from "./dto/login-auth.dto";
-import { hash, compare } from 'bcrypt';
+import {compare, hash} from 'bcrypt';
 import {UsersService} from "../users/users.service";
+import {JwtService} from "@nestjs/jwt";
 
 @Injectable()
 export class AuthService {
 
     constructor(
-        private usersService: UsersService
+        private usersService: UsersService,
+        private jwtService: JwtService
     ) {
     }
 
@@ -37,9 +39,19 @@ export class AuthService {
             throw new HttpException('La contraseña es incorrecta', HttpStatus.BAD_REQUEST);
         }
 
-        const data = findUser;
+        const payload = {
+            id: findUser.id,
+            name: findUser.name,
+            lastname: findUser.lastname,
+            email: findUser.email,
+            isAdmin: findUser.isAdmin,
+            isSuperAdmin: findUser.isSuperAdmin
+        }
+        const token = this.jwtService.sign(payload);
 
-        return data;
+        return {
+            token: token
+        };
     }
 
     async superAdminExists() {
