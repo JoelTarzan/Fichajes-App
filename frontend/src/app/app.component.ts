@@ -21,15 +21,20 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.authService.userLogged();
+    this.user = this.authService.isUserLogged();
 
-    if (!this.authService.userLogged()) {
+    if (!this.authService.isUserLogged()) {
       this.router.navigate(['/login']);
     }
   }
 
   toggleSidenav() {
     this.sidenav.toggle();
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
   }
 
 }

@@ -8,21 +8,34 @@ import {Observable} from "rxjs";
 export class AuthService {
 
   endpoint: string = 'http://localhost:3000';
-  user = false;
 
   constructor(private http: HttpClient) { }
 
-  //TODO Metodos que hagan el login y uno que compruebe si esta logueado
   superAdminExists(): Observable<boolean> {
     return this.http.get<boolean>(this.endpoint + '/auth/superadminexists');
   }
 
-  userLogged() {
-    return this.user;
+  isUserLogged() {
+    const userJsonString = localStorage.getItem('user');
+
+    if (userJsonString !== null) {
+      return true;
+
+    } else {
+      return false;
+    }
   }
 
   register(user: {name: string, lastname: string, email: string, password: string}): Observable<any> {
     return this.http.post(this.endpoint + '/auth/register', user);
+  }
+
+  login(user: {email: string, password: string}): Observable<any> {
+    return this.http.post(this.endpoint + '/auth/login', user);
+  }
+
+  logout() {
+    localStorage.removeItem('user');
   }
 
 }
