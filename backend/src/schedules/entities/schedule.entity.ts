@@ -73,7 +73,7 @@ export class Schedule {
     @Column({nullable: true})
     sundayBreakTimeMinutes: number
 
-    @OneToMany(() => Event, event => event.schedule)
+    @OneToMany(() => Event, event => event.schedule, {onDelete: "SET NULL"})
     events: Event[]
 
 }
