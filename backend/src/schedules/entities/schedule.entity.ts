@@ -10,68 +10,89 @@ export class Schedule {
     @Column()
     name: string
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     mondayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     mondayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     mondayBreakTimeMinutes: number
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "boolean", default: false})
+    workOnMonday: boolean
+
+    @Column({type: "time", default: "00:00"})
     tuesdayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     tuesdayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     tuesdayBreakTimeMinutes: number
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "boolean", default: false})
+    workOnTuesday: boolean
+
+    @Column({type: "time", default: "00:00"})
     wednesdayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     wednesdayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     wednesdayBreakTimeMinutes: number
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "boolean", default: false})
+    workOnWednesday: boolean
+
+    @Column({type: "time", default: "00:00"})
     thursdayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     thursdayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     thursdayBreakTimeMinutes: number
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "boolean", default: false})
+    workOnThursday: boolean
+
+    @Column({type: "time", default: "00:00"})
     fridayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     fridayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     fridayBreakTimeMinutes: number
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "boolean", default: false})
+    workOnFriday: boolean
+
+    @Column({type: "time", default: "00:00"})
     saturdayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     saturdayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     saturdayBreakTimeMinutes: number
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "boolean", default: false})
+    workOnSaturday: boolean
+
+    @Column({type: "time", default: "00:00"})
     sundayEntry: Date
 
-    @Column({type: "time", nullable: true})
+    @Column({type: "time", default: "00:00"})
     sundayExit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     sundayBreakTimeMinutes: number
+
+    @Column({type: "boolean", default: false})
+    workOnSunday: boolean
 
     @OneToMany(() => Event, event => event.schedule, {onDelete: "SET NULL"})
     events: Event[]
