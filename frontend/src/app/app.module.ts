@@ -25,6 +25,7 @@ import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ScheduleEditComponent } from './components/schedule-edit/schedule-edit.component';
 import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { ScheduleCreateComponent } from './components/schedule-create/schedule-create.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     UserEditComponent,
     UserCreateComponent,
     SchedulesComponent,
-    ScheduleEditComponent
+    ScheduleEditComponent,
+    ScheduleCreateComponent
   ],
   imports: [
     BrowserModule,

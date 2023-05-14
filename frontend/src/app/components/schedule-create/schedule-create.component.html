@@ -1,0 +1,207 @@
+<button mat-raised-button class="back-button" (click)="back()">Volver atrás</button>
+
+<div class="container">
+
+  <h2 class="title">Crear nuevo horario</h2>
+
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="createSchedule()">
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Lunes</h4>
+
+      <mat-checkbox formControlName="workOnMonday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="mondayEntry">
+          <mat-error *ngIf="form.get('mondayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="mondayExit">
+          <mat-error *ngIf="form.get('mondayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="mondayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Martes</h4>
+
+      <mat-checkbox formControlName="workOnTuesday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="tuesdayEntry">
+          <mat-error *ngIf="form.get('tuesdayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="tuesdayExit">
+          <mat-error *ngIf="form.get('tuesdayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="tuesdayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Miércoles</h4>
+
+      <mat-checkbox formControlName="workOnWednesday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="wednesdayEntry">
+          <mat-error *ngIf="form.get('wednesdayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="wednesdayExit">
+          <mat-error *ngIf="form.get('wednesdayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="wednesdayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Jueves</h4>
+
+      <mat-checkbox formControlName="workOnThursday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="thursdayEntry">
+          <mat-error *ngIf="form.get('thursdayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="thursdayExit">
+          <mat-error *ngIf="form.get('thursdayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="thursdayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Viernes</h4>
+
+      <mat-checkbox formControlName="workOnFriday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="fridayEntry">
+          <mat-error *ngIf="form.get('fridayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="fridayExit">
+          <mat-error *ngIf="form.get('fridayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="fridayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Sábado</h4>
+
+      <mat-checkbox formControlName="workOnSaturday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="saturdayEntry">
+          <mat-error *ngIf="form.get('saturdayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="saturdayExit">
+          <mat-error *ngIf="form.get('saturdayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="saturdayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="dayContainer">
+      <h4 class="dayName">Domingo</h4>
+
+      <mat-checkbox formControlName="workOnSunday" labelPosition="before">Dia Activo</mat-checkbox>
+
+      <div class="timeContainer">
+
+        <mat-form-field class="timeField">
+          <mat-label>Entrada</mat-label>
+          <input matInput formControlName="sundayEntry">
+          <mat-error *ngIf="form.get('sundayEntry')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Salida</mat-label>
+          <input matInput formControlName="sundayExit">
+          <mat-error *ngIf="form.get('sundayExit')?.hasError('pattern')">Utilice el patrón HH:mm</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="timeField">
+          <mat-label>Tiempo de descanso en minutos</mat-label>
+          <input matInput type="number" formControlName="sundayBreakTimeMinutes">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <button mat-raised-button [disabled]="form.invalid" class="submitButton" [ngClass]="{'colorWhite': form.valid}">Guardar</button>
+
+  </form>
+
+</div>
