@@ -1,5 +1,6 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Record} from "../../records/entities/record.entity";
+import {Event} from "../../events/entities/event.entity";
 
 @Entity('users')
 export class User {
@@ -30,4 +31,7 @@ export class User {
 
     @OneToMany(() => Record, record => record.user)
     records: Record[]
+
+    @OneToMany(() => Event, event => event.user)
+    events: Event[]
 }

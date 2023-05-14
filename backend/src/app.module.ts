@@ -10,6 +10,8 @@ import {Record} from "./records/entities/record.entity";
 import { UsersModule } from './users/users.module';
 import {User} from "./users/entities/user.entity";
 import { AuthModule } from './auth/auth.module';
+import { EventsModule } from './events/events.module';
+import { Event } from "./events/entities/event.entity";
 
 dotenv.config();
 
@@ -22,13 +24,14 @@ dotenv.config();
           username: process.env.DB_USER,
           password: process.env.DB_PASSWORD,
           database: 'fichajes_app',
-          entities: [Schedule, Record, User],
+          entities: [Schedule, Record, User, Event],
           synchronize: true
       }),
       SchedulesModule,
       RecordsModule,
       UsersModule,
-      AuthModule
+      AuthModule,
+      EventsModule
   ],
   controllers: [AppController],
   providers: [AppService],

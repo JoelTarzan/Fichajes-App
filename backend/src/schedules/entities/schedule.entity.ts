@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import {Event} from "../../events/entities/event.entity";
 
 @Entity('schedules')
 export class Schedule {
@@ -71,5 +72,8 @@ export class Schedule {
 
     @Column({nullable: true})
     sundayBreakTimeMinutes: number
+
+    @OneToMany(() => Event, event => event.schedule)
+    events: Event[]
 
 }
