@@ -14,4 +14,16 @@ export class UsersService {
   getUsers(): Observable<any> {
     return this.http.get(this.endpoint + '/users');
   }
+
+  getUserById(id: string): Observable<any> {
+    return this.http.get(this.endpoint + '/users/' + id);
+  }
+
+  updateUser(id: string, user: {name?: string, lastname?: string, email?: string, phone?: string, isAdmin?: boolean}): Observable<any> {
+    return this.http.patch(this.endpoint + '/users/' + id, user);
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(this.endpoint + '/users/' + id);
+  }
 }
