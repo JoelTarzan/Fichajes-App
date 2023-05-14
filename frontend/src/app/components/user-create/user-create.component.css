@@ -1,0 +1,46 @@
+.container {
+  width: 40%;
+  margin: 3rem auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 10px 0;
+}
+
+mat-label {
+  color: #798777;
+}
+
+mat-error {
+  color: red;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.submitButton {
+  background-color: #798777;
+}
+
+.colorWhite {
+  color: white;
+}
+
+.back-button {
+  background-color: #BDD2B6;
+  margin: 2rem 0 0 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}

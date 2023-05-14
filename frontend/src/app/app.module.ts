@@ -20,6 +20,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { UserCreateComponent } from './components/user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     LoginComponent,
     RegisterComponent,
     UsersComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,

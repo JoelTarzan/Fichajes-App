@@ -1,6 +1,10 @@
 <div class="container">
 
-  <h2 class="title">Usuarios</h2>
+  <div class="header">
+    <h2 class="title">Usuarios</h2>
+
+    <button mat-raised-button class="createUserButton" routerLink="/users/create">Crear nuevo usuario</button>
+  </div>
 
   <mat-table [dataSource]="dataSource">
 

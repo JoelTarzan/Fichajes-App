@@ -5,12 +5,14 @@ import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {UsersComponent} from "./components/users/users.component";
 import {UserEditComponent} from "./components/user-edit/user-edit.component";
+import {UserCreateComponent} from "./components/user-create/user-create.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'users/:id/edit', component: UserEditComponent}
+  {path: 'users/:id/edit', component: UserEditComponent},
+  {path: 'users/create', component: UserCreateComponent}
 ]
 
 @NgModule({

@@ -1,0 +1,44 @@
+<button mat-raised-button class="back-button" (click)="back()">Volver atrás</button>
+
+<div class="container">
+
+  <h2 class="title">Crear nuevo usuario</h2>
+
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="createUser()">
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Ingrese su nombre">
+      <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="lastname" placeholder="Ingrese su apellido">
+      <mat-error *ngIf="form.get('lastname')?.hasError('required')">El apellido es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="email" placeholder="Ingrese su correo electrónico">
+      <mat-error *ngIf="form.get('email')?.hasError('required')">El correo electrónico es obligatorio</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Ingrese su contraseña">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">La contraseña es obligatoria</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="isAdmin">
+        <mat-option value="true">Admin</mat-option>
+        <mat-option value="false">Empleado</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="form.invalid" class="submitButton" [ngClass]="{'colorWhite': form.valid}">Crear nuevo usuario</button>
+  </form>
+</div>

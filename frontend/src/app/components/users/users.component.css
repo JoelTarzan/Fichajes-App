@@ -16,3 +16,13 @@ button {
   font-size: 2.5rem;
   font-weight: 500;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.createUserButton {
+  margin: 0;
+}
