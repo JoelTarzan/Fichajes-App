@@ -21,6 +21,10 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { UserCreateComponent } from './components/user-create/user-create.component';
+import { SchedulesComponent } from './components/schedules/schedules.component';
+import { ScheduleEditComponent } from './components/schedule-edit/schedule-edit.component';
+import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
     RegisterComponent,
     UsersComponent,
     UserEditComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    SchedulesComponent,
+    ScheduleEditComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,9 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
     FormsModule,
     MatOptionModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxMatTimepickerModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,76 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+button {
+  margin: 0 0.5rem;
+}
+
+.container {
+  width: 40%;
+  margin: 3rem auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 10px 0;
+}
+
+mat-label {
+  color: #798777;
+}
+
+.back-button {
+  background-color: #BDD2B6;
+  margin: 1rem 0 0 1rem;
+}
+
+.container-buttons {
+  display: flex;
+}
+
+.submitButton {
+  background-color: #798777;
+  color: white;
+}
+
+.deleteButton {
+  background-color: #c30000;
+  color: white;
+}
+
+.dayContainer {
+  width: 100%;
+}
+
+.timeContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.timeField {
+  width: 30%;
+}
+
+.dayName {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+mat-checkbox {
+  margin: 0;
+}

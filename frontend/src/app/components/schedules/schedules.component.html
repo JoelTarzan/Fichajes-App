@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="header">
+    <h2 class="title">Horarios</h2>
+
+    <button mat-raised-button class="createScheduleButton">Crear nuevo horario</button>
+  </div>
+
+  <mat-list role="list">
+
+      <mat-list-item role="listitem" *ngFor="let schedule of schedules">
+        <button mat-raised-button color="primary" aria-label="Edit" class="itemButton" [routerLink]="['/schedules', schedule.id, 'edit']">
+          {{ schedule.name }}
+        </button>
+      </mat-list-item>
+
+  </mat-list>
+
+</div>
