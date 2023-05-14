@@ -29,9 +29,9 @@ export class User {
     @Column({type: "boolean", default: false})
     isSuperAdmin: boolean
 
-    @OneToMany(() => Record, record => record.user)
+    @OneToMany(() => Record, record => record.user, {onDelete: "CASCADE"})
     records: Record[]
 
-    @OneToMany(() => Event, event => event.user)
+    @OneToMany(() => Event, event => event.user, {onDelete: "CASCADE"})
     events: Event[]
 }
