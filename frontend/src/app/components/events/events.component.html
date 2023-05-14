@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="header">
+    <h2 class="title">Calendario</h2>
+
+    <mat-form-field>
+      <mat-label>Usuarios</mat-label>
+      <mat-select (selectionChange)="onSelect($event.value)">
+        <mat-option *ngFor="let user of users" [value]="user">
+          {{ user.name + ' ' + user.lastname}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
+
