@@ -32,6 +32,6 @@ export class SchedulesController {
 
     @Patch(':id')
     updateSchedule(@Param('id', ParseIntPipe) id: number, @Body() schedule: UpdateScheduleDto) {
-        return this.schedulesService.update(id, schedule);
+        return this.schedulesService.updateSchedule(id, schedule);
     }
 }

@@ -64,7 +64,7 @@ export class SchedulesService {
         return this.scheduleRepository.delete({id});
     }
 
-    async update(id: number, schedule: UpdateScheduleDto) {
+    async updateSchedule(id: number, schedule: UpdateScheduleDto) {
 
         const scheduleFound = await this.scheduleRepository.findOne({
             where: {
