@@ -16,7 +16,7 @@ export class Record {
     @Column({type: "time", nullable: true})
     exit: Date
 
-    @Column({nullable: true})
+    @Column({default: 0})
     breakTimeMinutes: number
 
     @ManyToOne(() => User, user => user.records)
