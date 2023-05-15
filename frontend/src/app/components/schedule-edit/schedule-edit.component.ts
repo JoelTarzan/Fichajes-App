@@ -123,6 +123,11 @@ export class ScheduleEditComponent implements OnInit {
         this.snackBar.open('Horario eliminado correctamente', 'Cerrar', {
           duration: 2000,
         });
+      },
+      () => {
+        this.snackBar.open('Hay eventos relacionados con este horario, porfavor elimine antes dichos eventos', 'Cerrar', {
+          duration: 2000,
+        });
       }
     );
   }
