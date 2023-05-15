@@ -26,6 +26,9 @@ export class Event {
     @Column({type: "time"})
     exitHour: Date
 
+    @Column({default: 0})
+    breakTimeMinutesExpected: number
+
     @Column({default: false})
     vacation: boolean
 

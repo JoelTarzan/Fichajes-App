@@ -5,6 +5,7 @@ export class CreateEventDto {
     date: Date;
     entryHour?: Date;
     exitHour?: Date;
+    breakTimeMinutesExpected?: number;
     vacation?: boolean;
     sickLeave?: boolean;
     holiday?: boolean;

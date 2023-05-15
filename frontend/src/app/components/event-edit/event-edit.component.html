@@ -24,6 +24,11 @@
       <h4>Hora Salida</h4>
       <p *ngIf="event">{{ event.exitHour.slice(0, 5) }}</p>
     </div>
+
+    <div class="hour-container">
+      <h4>Tiempo de descanso esperado</h4>
+      <p *ngIf="event">{{ event.breakTimeMinutesExpected }} minutos</p>
+    </div>
   </div>
 
   <form [formGroup]="form" *ngIf="form">

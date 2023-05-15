@@ -69,30 +69,37 @@ export class EventsService {
         if (dayOfWeek == 0) {
             event.entryHour = schedule.sundayEntry;
             event.exitHour = schedule.sundayExit;
+            event.breakTimeMinutesExpected = schedule.sundayBreakTimeMinutes;
 
         } else if (dayOfWeek == 1) {
             event.entryHour = schedule.mondayEntry;
             event.exitHour = schedule.mondayExit;
+            event.breakTimeMinutesExpected = schedule.mondayBreakTimeMinutes;
 
         } else if (dayOfWeek == 2) {
             event.entryHour = schedule.tuesdayEntry;
             event.exitHour = schedule.tuesdayExit;
+            event.breakTimeMinutesExpected = schedule.tuesdayBreakTimeMinutes;
 
         } else if (dayOfWeek == 3) {
             event.entryHour = schedule.wednesdayEntry;
             event.exitHour = schedule.wednesdayExit;
+            event.breakTimeMinutesExpected = schedule.wednesdayBreakTimeMinutes;
 
         } else if (dayOfWeek == 4) {
             event.entryHour = schedule.thursdayEntry;
             event.exitHour = schedule.thursdayExit;
+            event.breakTimeMinutesExpected = schedule.thursdayBreakTimeMinutes;
 
         } else if (dayOfWeek == 5) {
             event.entryHour = schedule.fridayEntry;
             event.exitHour = schedule.fridayExit;
+            event.breakTimeMinutesExpected = schedule.fridayBreakTimeMinutes;
 
         } else if (dayOfWeek == 6) {
             event.entryHour = schedule.saturdayEntry;
             event.exitHour = schedule.saturdayExit;
+            event.breakTimeMinutesExpected = schedule.saturdayBreakTimeMinutes;
         }
 
         const newEvent = this.eventRepository.create(event);
