@@ -4,6 +4,7 @@ import {Repository} from "typeorm";
 import {Event} from "./entities/event.entity";
 import {CreateEventDto} from "./dto/create-event.dto";
 import {SchedulesService} from "../schedules/schedules.service";
+import {UpdateEventDto} from "./dto/update-event.dto";
 
 @Injectable()
 export class EventsService {
@@ -111,6 +112,42 @@ export class EventsService {
         }
 
         return this.eventRepository.delete({id});
+    }
+
+    async updateEvent(id: number, event: UpdateEventDto) {
+
+        const schedule = await this.schedulesService.getOneSchedule(event.scheduleId);
+
+        const eventFound = await this.eventRepository.findOne({
+           where: {
+               id
+           }
+        });
+
+        if (!eventFound) {
+            throw new HttpException('Evento no encontrado', HttpStatus.NOT_FOUND);
+        }
+
+        if (event.vacation) {
+            event.name = schedule.name + ' - Vacaciones';
+            event.sickLeave = false;
+            event.holiday = false;
+
+        } else if (event.sickLeave) {
+            event.name = schedule.name + ' - Baja';
+            event.vacation = false;
+            event.holiday = false;
+
+        } else if (event.holiday) {
+            event.name = schedule.name + ' - Festivo';
+            event.sickLeave = false;
+            event.vacation = false;
+
+        } else {
+            event.name = schedule.name;
+        }
+
+        return this.eventRepository.update({ id }, event);
     }
 
 }

@@ -1,7 +1,8 @@
-import {Body, Controller, Delete, Get, Param, ParseIntPipe, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post} from '@nestjs/common';
 import {EventsService} from "./events.service";
 import {CreateEventDto} from "./dto/create-event.dto";
 import {Event} from "./entities/event.entity";
+import {UpdateEventDto} from "./dto/update-event.dto";
 
 @Controller('events')
 export class EventsController {
@@ -32,5 +33,10 @@ export class EventsController {
     @Delete(':id')
     deleteEvent(@Param('id', ParseIntPipe) id: number) {
         return this.eventsService.deleteEvent(id);
+    }
+
+    @Patch(':id')
+    updateEvent(@Param('id', ParseIntPipe) id: number, @Body() event: UpdateEventDto) {
+        return this.eventsService.updateEvent(id, event);
     }
 }
