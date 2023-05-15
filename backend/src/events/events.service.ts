@@ -34,6 +34,17 @@ export class EventsService {
         return eventFound;
     }
 
+    async getEventsByUser(id: string) {
+
+        return await this.eventRepository.find({
+            where: {
+                user: {
+                    id
+                }
+            }
+        });
+    }
+
     async createEvent(event: CreateEventDto) {
 
         const schedule = await this.schedulesService.getOneSchedule(event.scheduleId);
