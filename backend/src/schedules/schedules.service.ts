@@ -22,7 +22,7 @@ export class SchedulesService {
 
         const scheduleFound = await this.scheduleRepository.findOne({
            where: {
-               id
+               id: id
            }
         });
 

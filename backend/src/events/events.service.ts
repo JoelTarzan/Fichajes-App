@@ -103,7 +103,7 @@ export class EventsService {
         }
 
         const newEvent = this.eventRepository.create(event);
-        return  this.eventRepository.save(newEvent);
+        return this.eventRepository.save(newEvent);
     }
 
     async deleteEvent(id: number) {
@@ -123,8 +123,6 @@ export class EventsService {
 
     async updateEvent(id: number, event: UpdateEventDto) {
 
-        const schedule = await this.schedulesService.getOneSchedule(event.scheduleId);
-
         const eventFound = await this.eventRepository.findOne({
            where: {
                id
@@ -135,23 +133,25 @@ export class EventsService {
             throw new HttpException('Evento no encontrado', HttpStatus.NOT_FOUND);
         }
 
+        const nameFormatted = eventFound.name.split('-')[0];
+
         if (event.vacation) {
-            event.name = schedule.name + ' - Vacaciones';
+            event.name = nameFormatted + ' - Vacaciones';
             event.sickLeave = false;
             event.holiday = false;
 
         } else if (event.sickLeave) {
-            event.name = schedule.name + ' - Baja';
+            event.name = nameFormatted + ' - Baja';
             event.vacation = false;
             event.holiday = false;
 
         } else if (event.holiday) {
-            event.name = schedule.name + ' - Festivo';
+            event.name = nameFormatted + ' - Festivo';
             event.sickLeave = false;
             event.vacation = false;
 
         } else {
-            event.name = schedule.name;
+            event.name = nameFormatted;
         }
 
         return this.eventRepository.update({ id }, event);

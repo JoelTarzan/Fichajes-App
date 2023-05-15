@@ -139,6 +139,7 @@ export class EventCreateComponent implements OnInit {
       const event = {
         user: this.selectedUser.id,
         schedule: this.selectedSchedule.id,
+        scheduleId: this.selectedSchedule.id,
         date: date,
         holiday: this.holiday,
         sickLeave: this.sickLeave,

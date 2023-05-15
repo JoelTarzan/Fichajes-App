@@ -22,7 +22,7 @@ export class EventsService {
     return this.http.get(this.endpoint + '/events/all/' + id);
   }
 
-  createEvent(event: {user: string, schedule: number, date: string, holiday: boolean, sickLeave: boolean, vacation: boolean}): Observable<any> {
+  createEvent(event: {user: string, schedule: number, scheduleId: string, date: string, holiday: boolean, sickLeave: boolean, vacation: boolean}): Observable<any> {
     return this.http.post(this.endpoint + '/events', event);
   }
 
