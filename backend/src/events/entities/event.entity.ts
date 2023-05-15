@@ -20,6 +20,12 @@ export class Event {
     @Column({type: "date"})
     date: Date
 
+    @Column({type: "time"})
+    entryHour: Date
+
+    @Column({type: "time"})
+    exitHour: Date
+
     @Column({default: false})
     vacation: boolean
 
