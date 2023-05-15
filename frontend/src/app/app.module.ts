@@ -17,7 +17,7 @@ import { UsersComponent } from './components/users/users.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-import {MatOptionModule} from "@angular/material/core";
+import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { UserCreateComponent } from './components/user-create/user-create.component';
@@ -32,6 +32,8 @@ import { EventEditComponent } from './components/event-edit/event-edit.component
 import {MatCardModule} from "@angular/material/card";
 import {DatePipe} from "@angular/common";
 import {MatRadioModule} from "@angular/material/radio";
+import { EventCreateComponent } from './components/event-create/event-create.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -45,33 +47,37 @@ import {MatRadioModule} from "@angular/material/radio";
     ScheduleEditComponent,
     ScheduleCreateComponent,
     EventsComponent,
-    EventEditComponent
+    EventEditComponent,
+    EventCreateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    HttpClientModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    FormsModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    NgxMatTimepickerModule,
-    MatCheckboxModule,
-    FullCalendarModule,
-    MatCardModule,
-    MatRadioModule
-  ],
-  providers: [DatePipe],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        HttpClientModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        FormsModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatSnackBarModule,
+        NgxMatTimepickerModule,
+        MatCheckboxModule,
+        FullCalendarModule,
+        MatCardModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
+  providers: [DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,59 @@
+<button mat-raised-button class="back-button" (click)="back()">Volver atrás</button>
+
+<div class="container">
+
+  <h2 class="title">Aplicar horario</h2>
+
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="createEvent()">
+
+    <h4>Selecciona un usuario y un horario</h4>
+
+    <div class="container-selectors">
+
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select (selectionChange)="onSelectUser($event.value)" formControlName="user">
+          <mat-option *ngFor="let user of users" [value]="user">
+            {{ user.name + ' ' + user.lastname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Horarios</mat-label>
+        <mat-select (selectionChange)="onSelectSchedule($event.value)" formControlName="schedule">
+          <mat-option *ngFor="let schedule of schedules" [value]="schedule">
+            {{ schedule.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <h4>Selecciona el rango de fechas</h4>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rango de fechas</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="startDate">
+        <input matEndDate formControlName="endDate">
+      </mat-date-range-input>
+      <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <h4>Aplicar estado</h4>
+
+    <mat-radio-group formControlName="status" labelPosition="before">
+      <mat-radio-button value="none">Nada</mat-radio-button>
+      <mat-radio-button value="holiday">Festivo</mat-radio-button>
+      <mat-radio-button value="vacation">Vacaciones</mat-radio-button>
+      <mat-radio-button value="sickLeave">Baja laboral</mat-radio-button>
+    </mat-radio-group>
+
+    <button mat-raised-button [disabled]="form.invalid" class="submitButton" [ngClass]="{'colorWhite': form.valid}">Guardar</button>
+
+  </form>
+
+</div>

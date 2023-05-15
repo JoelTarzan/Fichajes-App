@@ -11,6 +11,7 @@ import {ScheduleEditComponent} from "./components/schedule-edit/schedule-edit.co
 import {ScheduleCreateComponent} from "./components/schedule-create/schedule-create.component";
 import {EventsComponent} from "./components/events/events.component";
 import {EventEditComponent} from "./components/event-edit/event-edit.component";
+import {EventCreateComponent} from "./components/event-create/event-create.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'schedules/:id/edit', component: ScheduleEditComponent},
   {path: 'schedules/create', component: ScheduleCreateComponent},
   {path: 'events', component: EventsComponent},
-  {path: 'events/:id/edit', component: EventEditComponent}
+  {path: 'events/:id/edit', component: EventEditComponent},
+  {path: 'events/create', component: EventCreateComponent}
 ]
 
 @NgModule({

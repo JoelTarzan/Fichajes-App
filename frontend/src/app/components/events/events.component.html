@@ -3,17 +3,20 @@
   <div class="header">
     <h2 class="title">Calendario</h2>
 
-    <mat-form-field>
-      <mat-label>Usuarios</mat-label>
-      <mat-select (selectionChange)="onSelect($event.value)">
-        <mat-option *ngFor="let user of users" [value]="user">
-          {{ user.name + ' ' + user.lastname}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div>
+      <button mat-raised-button class="applySchedule" routerLink="/events/create">Aplicar horario</button>
+
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select (selectionChange)="onSelect($event.value)">
+          <mat-option *ngFor="let user of users" [value]="user">
+            {{ user.name + ' ' + user.lastname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
   </div>
-
-
 
   <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
