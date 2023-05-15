@@ -3,6 +3,7 @@ import {CalendarOptions} from "@fullcalendar/core";
 import dayGridPlugin from '@fullcalendar/daygrid';
 import esLocale from '@fullcalendar/core/locales/es';
 import {UsersService} from "../../services/users.service";
+import {EventsService} from "../../services/events.service";
 
 @Component({
   selector: 'app-events',
@@ -13,40 +14,19 @@ export class EventsComponent implements OnInit{
 
   users: any;
   selectedUser: any;
+  events: any[] = [];
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin],
     locale: esLocale,
     contentHeight: '70vh',
-    events: [{
-      title: 'Horario Joel',
-      start: '2023-05-01',
-      userId: 1,
-      scheduleId: 1,
-      backgroundColor: '#4CAF50',
-      borderColor: '#4CAF50'
-    },
-      {
-        title: 'Evento 2',
-        start: '2023-05-10',
-        userId: 2,
-        scheduleId: 2,
-        backgroundColor: '#3F51B5',
-        borderColor: '#3F51B5'
-      },
-      {
-        title: 'Evento 3',
-        start: '2023-05-20',
-        userId: 3,
-        scheduleId: 3,
-        backgroundColor: '#9C27B0',
-        borderColor: '#9C27B0'
-      }]
+    events: this.events
   }
 
   constructor(
-    private usersService: UsersService,) {
+    private usersService: UsersService,
+    private eventsService: EventsService) {
   }
 
   ngOnInit() {
@@ -58,8 +38,44 @@ export class EventsComponent implements OnInit{
   }
 
   onSelect(user: any) {
+    this.events = [];
     this.selectedUser = user;
-    console.log(this.selectedUser);
+
+    this.eventsService.getEventsByUser(user.id).subscribe(
+      (events) => {
+
+        events.forEach((event: any) => {
+
+          let colorStatus: any;
+
+          if (event.vacation) {
+            colorStatus = '#ba9734';
+
+          } else if (event.sickLeave) {
+            colorStatus = '#ed8790';
+
+          } else if (event.holiday) {
+            colorStatus = '#99f7ee';
+
+          } else {
+            colorStatus = '#A2B29F';
+
+          }
+
+          const eventObject = {
+            title: event.name,
+            start: event.date,
+            id: event.id,
+            backgroundColor: colorStatus,
+            borderColor: colorStatus
+          }
+
+          this.events.push(eventObject);
+        });
+
+        this.calendarOptions.events = this.events;
+      }
+    );
   }
 
 }
