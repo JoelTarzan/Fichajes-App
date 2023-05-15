@@ -29,6 +29,9 @@ import { ScheduleCreateComponent } from './components/schedule-create/schedule-c
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { EventsComponent } from './components/events/events.component';
 import { EventEditComponent } from './components/event-edit/event-edit.component';
+import {MatCardModule} from "@angular/material/card";
+import {DatePipe} from "@angular/common";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -64,9 +67,11 @@ import { EventEditComponent } from './components/event-edit/event-edit.component
     MatSnackBarModule,
     NgxMatTimepickerModule,
     MatCheckboxModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatCardModule,
+    MatRadioModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

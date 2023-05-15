@@ -1,1 +1,47 @@
-<p>event-edit works!</p>
+<button mat-raised-button class="back-button" (click)="back()">Volver atrás</button>
+
+<div class="container">
+
+  <h2 class="title">Editar Evento</h2>
+
+  <div class="data-container">
+    <h4>Nombre</h4>
+    <p *ngIf="event">{{ event.name }}</p>
+  </div>
+
+  <div class="data-container">
+    <h4>Fecha</h4>
+    <p *ngIf="event">{{ eventDate }}</p>
+  </div>
+
+  <div class="time-container">
+    <div class="hour-container">
+      <h4>Hora Entrada</h4>
+      <p *ngIf="event">{{ event.entryHour.slice(0, 5) }}</p>
+    </div>
+
+    <div class="hour-container">
+      <h4>Hora Salida</h4>
+      <p *ngIf="event">{{ event.exitHour.slice(0, 5) }}</p>
+    </div>
+  </div>
+
+  <form [formGroup]="form" *ngIf="form">
+
+    <h4>Aplicar estado</h4>
+    <mat-radio-group formControlName="status" labelPosition="before">
+      <mat-radio-button value="none">Nada</mat-radio-button>
+      <mat-radio-button value="holiday">Festivo</mat-radio-button>
+      <mat-radio-button value="vacation">Vacaciones</mat-radio-button>
+      <mat-radio-button value="sickLeave">Baja laboral</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="container-buttons">
+      <button mat-raised-button class="deleteButton" (click)="delete()">Eliminar</button>
+      <button mat-raised-button class="submitButton" (click)="update()">Guardar</button>
+    </div>
+
+  </form>
+
+
+</div>

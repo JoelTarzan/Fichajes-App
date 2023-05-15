@@ -14,7 +14,19 @@ export class EventsService {
     return this.http.get(this.endpoint + '/events');
   }
 
+  getEventById(id: number) {
+    return this.http.get(this.endpoint + '/events/' + id);
+  }
+
   getEventsByUser(id: string): Observable<any> {
     return this.http.get(this.endpoint + '/events/all/' + id);
+  }
+
+  updateEvent(id: number, event: {holiday: string, sickLeave: string, vacation: string}): Observable<any> {
+    return this.http.patch(this.endpoint + '/events/' + id, event);
+  }
+
+  deleteEvent(id: number): Observable<any> {
+    return this.http.delete(this.endpoint + '/events/' + id);
   }
 }

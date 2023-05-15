@@ -52,13 +52,13 @@ export class EventsComponent implements OnInit{
           let colorStatus: any;
 
           if (event.vacation) {
-            colorStatus = '#ba9734';
+            colorStatus = '#d8ba62';
 
           } else if (event.sickLeave) {
             colorStatus = '#ed8790';
 
           } else if (event.holiday) {
-            colorStatus = '#99f7ee';
+            colorStatus = '#7dbfb8';
 
           } else {
             colorStatus = '#A2B29F';
