@@ -28,6 +28,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { ScheduleCreateComponent } from './components/schedule-create/schedule-create.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import { EventsComponent } from './components/events/events.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { EventsComponent } from './components/events/events.component';
     SchedulesComponent,
     ScheduleEditComponent,
     ScheduleCreateComponent,
-    EventsComponent
+    EventsComponent,
+    EventEditComponent
   ],
   imports: [
     BrowserModule,

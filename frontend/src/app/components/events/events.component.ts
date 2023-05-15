@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import esLocale from '@fullcalendar/core/locales/es';
 import {UsersService} from "../../services/users.service";
 import {EventsService} from "../../services/events.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-events',
@@ -21,12 +22,14 @@ export class EventsComponent implements OnInit{
     plugins: [dayGridPlugin],
     locale: esLocale,
     contentHeight: '70vh',
-    events: this.events
+    events: this.events,
+    eventClick: this.handleEventClick.bind(this)
   }
 
   constructor(
     private usersService: UsersService,
-    private eventsService: EventsService) {
+    private eventsService: EventsService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -76,6 +79,11 @@ export class EventsComponent implements OnInit{
         this.calendarOptions.events = this.events;
       }
     );
+  }
+
+  handleEventClick(eventInfo: any) {
+    const eventId = eventInfo.event.id;
+    this.router.navigate(['/events', eventId, 'edit']);
   }
 
 }
