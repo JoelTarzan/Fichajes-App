@@ -14,8 +14,11 @@ import {EventEditComponent} from "./components/event-edit/event-edit.component";
 import {EventCreateComponent} from "./components/event-create/event-create.component";
 import {RecordsComponent} from "./components/records/records.component";
 import {RecordEditComponent} from "./components/record-edit/record-edit.component";
+import {ClockinComponent} from "./components/clockin/clockin.component";
+import {ChangepasswordComponent} from "./components/changepassword/changepassword.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'clockin', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'users', component: UsersComponent},
@@ -28,7 +31,9 @@ const routes: Routes = [
   {path: 'events/:id/edit', component: EventEditComponent},
   {path: 'events/create', component: EventCreateComponent},
   {path: 'records', component: RecordsComponent},
-  {path: 'records/:id/:eventid/:userid/edit', component: RecordEditComponent}
+  {path: 'records/:id/:eventid/:userid/edit', component: RecordEditComponent},
+  {path: 'clockin', component: ClockinComponent},
+  {path: 'changepassword', component: ChangepasswordComponent}
 ]
 
 @NgModule({
