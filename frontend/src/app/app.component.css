@@ -1,6 +1,7 @@
 mat-toolbar {
   background-color: #798777;
   color: black;
+  justify-content: space-between;
 }
 
 mat-sidenav-container {
@@ -30,4 +31,9 @@ mat-divider {
 
 .bg-color {
   background-color: #F8EDE3;
+}
+
+.toolbar-div {
+  display: flex;
+  align-items: center;
 }

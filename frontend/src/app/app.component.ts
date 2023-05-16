@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   sidenav!: MatSidenav;
 
   user = false;
+  userData: any;
 
   constructor(
     private authService: AuthService,
@@ -22,6 +23,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.isUserLogged();
+
+    if (this.user) {
+      this.userData = JSON.parse(localStorage.getItem('user')!);
+    }
 
     if (!this.authService.isUserLogged()) {
       this.router.navigate(['/login']);

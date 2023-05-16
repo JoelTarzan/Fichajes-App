@@ -1,8 +1,14 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" (click)="toggleSidenav()" *ngIf="user">
-    <mat-icon>menu</mat-icon>
-  </button>
-  Time Tracker App
+  <div class="toolbar-div">
+    <button mat-icon-button class="example-icon" (click)="toggleSidenav()" *ngIf="user">
+      <mat-icon>menu</mat-icon>
+    </button>
+    Time Tracker App
+  </div>
+
+  <div *ngIf="user">
+    {{ userData.name + ' ' + userData.lastname }}
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -13,33 +19,37 @@
       <span>Fichaje</span>
     </button>
 
-    <mat-divider></mat-divider>
+    <ng-container *ngIf="user">
+      <ng-container *ngIf="userData.isAdmin">
+        <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/users">
-      <mat-icon>people</mat-icon>
-      <span>Usuarios</span>
-    </button>
+        <button mat-button class="menu-button" routerLink="/users">
+          <mat-icon>people</mat-icon>
+          <span>Usuarios</span>
+        </button>
 
-    <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/events">
-      <mat-icon>calendar_today</mat-icon>
-      <span>Calendario</span>
-    </button>
+        <button mat-button class="menu-button" routerLink="/events">
+          <mat-icon>calendar_today</mat-icon>
+          <span>Calendario</span>
+        </button>
 
-    <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/records">
-      <mat-icon>calendar_view_day</mat-icon>
-      <span>Registros</span>
-    </button>
+        <button mat-button class="menu-button" routerLink="/records">
+          <mat-icon>calendar_view_day</mat-icon>
+          <span>Registros</span>
+        </button>
 
-    <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/schedules">
-      <mat-icon>schedule</mat-icon>
-      <span>Horarios</span>
-    </button>
+        <button mat-button class="menu-button" routerLink="/schedules">
+          <mat-icon>schedule</mat-icon>
+          <span>Horarios</span>
+        </button>
+      </ng-container>
+    </ng-container>
 
     <mat-divider></mat-divider>
 
