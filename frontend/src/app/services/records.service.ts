@@ -24,6 +24,7 @@ export class RecordsService {
 
         return formattedEvents.map(event => ({
           ...event,
+          id: this.searchId(formattedRecords, event.date),
           entry: this.searchEntry(formattedRecords, event.date),
           exit: this.searchExit(formattedRecords, event.date),
           breakTimeMinutes: this.searchBreakTimeMinutes(formattedRecords, event.date)
@@ -47,11 +48,17 @@ export class RecordsService {
 
   formatRecords(records: any[]): RecordRow[] {
     return records.map(record => ({
+      id: record.id,
       date: record.date,
       entry: record.entry,
       exit: record.exit,
       breakTimeMinutes: record.breakTimeMinutes
     }));
+  }
+
+  searchId(records: RecordRow[], date: string | undefined): number | undefined {
+    const record = records.find(record => record.date === date);
+    return record ? record.id : undefined;
   }
 
   searchEntry(records: RecordRow[], date: string | undefined): string | undefined {

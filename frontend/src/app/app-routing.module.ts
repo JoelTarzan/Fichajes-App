@@ -13,6 +13,7 @@ import {EventsComponent} from "./components/events/events.component";
 import {EventEditComponent} from "./components/event-edit/event-edit.component";
 import {EventCreateComponent} from "./components/event-create/event-create.component";
 import {RecordsComponent} from "./components/records/records.component";
+import {RecordEditComponent} from "./components/record-edit/record-edit.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'events', component: EventsComponent},
   {path: 'events/:id/edit', component: EventEditComponent},
   {path: 'events/create', component: EventCreateComponent},
-  {path: 'records', component: RecordsComponent}
+  {path: 'records', component: RecordsComponent},
+  {path: 'records/:id/edit', component: RecordEditComponent}
 ]
 
 @NgModule({

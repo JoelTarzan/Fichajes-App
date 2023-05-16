@@ -35,6 +35,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import { EventCreateComponent } from './components/event-create/event-create.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { RecordsComponent } from './components/records/records.component';
+import { RecordEditComponent } from './components/record-edit/record-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RecordsComponent } from './components/records/records.component';
     EventsComponent,
     EventEditComponent,
     EventCreateComponent,
-    RecordsComponent
+    RecordsComponent,
+    RecordEditComponent
   ],
     imports: [
         BrowserModule,
