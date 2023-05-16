@@ -33,12 +33,13 @@ export class RecordsService {
     );
   }
 
-  getRecordsByUser(id: string): Observable<any> {
-    return this.http.get(this.endpoint + '/records/all/' + id);
+  getRecordsById(id: string): Observable<any> {
+    return this.http.get(this.endpoint + '/records/' + id);
   }
 
   private formatEvents(events: any[]): RecordRow[] {
     return events.map(event => ({
+      eventId: event.id,
       date: event.date,
       entryExpected: event.entryHour,
       exitExpected: event.exitHour,
@@ -46,7 +47,7 @@ export class RecordsService {
     }));
   }
 
-  formatRecords(records: any[]): RecordRow[] {
+  private formatRecords(records: any[]): RecordRow[] {
     return records.map(record => ({
       id: record.id,
       date: record.date,
@@ -56,22 +57,22 @@ export class RecordsService {
     }));
   }
 
-  searchId(records: RecordRow[], date: string | undefined): number | undefined {
+  private searchId(records: RecordRow[], date: string | undefined): number | undefined {
     const record = records.find(record => record.date === date);
     return record ? record.id : undefined;
   }
 
-  searchEntry(records: RecordRow[], date: string | undefined): string | undefined {
+  private searchEntry(records: RecordRow[], date: string | undefined): string | undefined {
     const record = records.find(record => record.date === date);
     return record ? record.entry : undefined;
   }
 
-  searchExit(records: RecordRow[], date: string | undefined): string | undefined {
+  private searchExit(records: RecordRow[], date: string | undefined): string | undefined {
     const record = records.find(record => record.date === date);
     return record ? record.exit : undefined;
   }
 
-  searchBreakTimeMinutes(records: RecordRow[], date: string | undefined): number | undefined {
+  private searchBreakTimeMinutes(records: RecordRow[], date: string | undefined): number | undefined {
     const record = records.find(record => record.date === date);
     return record ? record.breakTimeMinutes : undefined;
   }
