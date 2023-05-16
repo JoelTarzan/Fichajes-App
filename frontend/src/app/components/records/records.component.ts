@@ -11,7 +11,7 @@ import {RecordRow} from "./recordRow";
 })
 export class RecordsComponent implements OnInit {
 
-  displayedColumns: string[] = ['date', 'entry', 'exit', 'breakTimeMinutes', 'entryExpected', 'exitExpected', 'breakTimeMinutesExpected'];
+  displayedColumns: string[] = ['date', 'entry', 'exit', 'breakTimeMinutes', 'entryExpected', 'exitExpected', 'breakTimeMinutesExpected', 'actions'];
   dataSource: RecordRow[] = [];
   pageSlice: RecordRow[] = [];
   pageIndex: number = 0;
