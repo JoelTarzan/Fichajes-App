@@ -25,6 +25,11 @@ export class EventsController {
         return this.eventsService.getEventsByUser(id);
     }
 
+    @Get('workdays/:id')
+    getWorkDaysByUser(@Param('id') id: string): Promise<Event[]> {
+        return this.eventsService.getWorkDaysByUser(id);
+    }
+
     @Post()
     createEvent(@Body() newEvent: CreateEventDto): Promise<Event> {
         return this.eventsService.createEvent(newEvent);

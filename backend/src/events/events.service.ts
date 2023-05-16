@@ -46,6 +46,20 @@ export class EventsService {
         });
     }
 
+    async getWorkDaysByUser(id: string) {
+
+        return await this.eventRepository.find({
+            where: {
+                user: {
+                    id
+                },
+                holiday: false,
+                sickLeave: false,
+                vacation: false
+            }
+        });
+    }
+
     async createEvent(event: CreateEventDto) {
 
         const schedule = await this.schedulesService.getOneSchedule(event.scheduleId);

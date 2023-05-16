@@ -14,7 +14,7 @@ export class RecordsService {
   constructor(private http: HttpClient) { }
 
   getRecordsRow(id: string): Observable<RecordRow[]> {
-    const events$ = this.http.get<any[]>(this.endpoint + '/events/all/' + id);
+    const events$ = this.http.get<any[]>(this.endpoint + '/events/workdays/' + id);
     const records$ = this.http.get<any[]>(this.endpoint + '/records/all/' + id);
 
     return forkJoin([events$, records$]).pipe(
