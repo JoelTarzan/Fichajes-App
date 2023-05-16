@@ -15,6 +15,10 @@ export class AuthService {
     return this.http.get<boolean>(this.endpoint + '/auth/superadminexists');
   }
 
+  verifyPassword(user: any): Observable<any> {
+    return this.http.post(this.endpoint + '/auth/verifypassword', user);
+  }
+
   isUserLogged() {
     const userJsonString = localStorage.getItem('user');
 

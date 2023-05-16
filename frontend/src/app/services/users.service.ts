@@ -19,7 +19,7 @@ export class UsersService {
     return this.http.get(this.endpoint + '/users/' + id);
   }
 
-  updateUser(id: string, user: {name?: string, lastname?: string, email?: string, phone?: string, isAdmin?: boolean}): Observable<any> {
+  updateUser(id: string, user: {name?: string, lastname?: string, password?: string, email?: string, phone?: string, isAdmin?: boolean}): Observable<any> {
     return this.http.patch(this.endpoint + '/users/' + id, user);
   }
 
