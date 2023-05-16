@@ -34,6 +34,7 @@ import {DatePipe} from "@angular/common";
 import {MatRadioModule} from "@angular/material/radio";
 import { EventCreateComponent } from './components/event-create/event-create.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { RecordsComponent } from './components/records/records.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ScheduleCreateComponent,
     EventsComponent,
     EventEditComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    RecordsComponent
   ],
     imports: [
         BrowserModule,
