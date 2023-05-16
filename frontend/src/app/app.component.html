@@ -8,6 +8,13 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
 
+    <button mat-button class="menu-button" routerLink="/clockin">
+      <mat-icon>work</mat-icon>
+      <span>Fichaje</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
     <button mat-button class="menu-button" routerLink="/users">
       <mat-icon>people</mat-icon>
       <span>Usuarios</span>
@@ -32,6 +39,13 @@
     <button mat-button class="menu-button" routerLink="/schedules">
       <mat-icon>schedule</mat-icon>
       <span>Horarios</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/changepassword">
+      <mat-icon>cached</mat-icon>
+      <span>Cambiar contraseña</span>
     </button>
 
     <mat-divider></mat-divider>

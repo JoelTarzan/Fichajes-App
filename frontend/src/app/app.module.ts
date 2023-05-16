@@ -17,7 +17,7 @@ import { UsersComponent } from './components/users/users.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { UserCreateComponent } from './components/user-create/user-create.component';

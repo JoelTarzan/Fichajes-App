@@ -8,10 +8,9 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 200px;
+  width: 230px;
   border-right: none;
   background-color: #A2B29F;
-  color: white;
   padding: 16px;
   text-align: left;
 }
