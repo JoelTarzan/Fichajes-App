@@ -30,7 +30,7 @@ export class RecordsController {
         return this.recordsService.createRecord(newRecord);
     }
 
-    @Delete()
+    @Delete(':id')
     deleteRecord(@Param('id', ParseIntPipe) id: number) {
         return this.recordsService.deleteRecord(id);
     }
