@@ -13,6 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class ScheduleCreateComponent implements OnInit {
 
   form!: FormGroup;
+  userData: any;
 
   constructor(
     private schedulesService: SchedulesService,
@@ -22,6 +23,12 @@ export class ScheduleCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     this.initForm();
   }
 

@@ -16,6 +16,7 @@ export class EventsComponent implements OnInit{
   users: any;
   selectedUser: any;
   events: any[] = [];
+  userData: any;
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -33,6 +34,12 @@ export class EventsComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     this.usersService.getUsers().subscribe(
       (users) => {
         this.users = users;

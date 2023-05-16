@@ -19,6 +19,7 @@ export class RecordEditComponent implements OnInit {
   userId: any;
   date: any;
   form!: FormGroup;
+  userData: any;
 
   constructor(
     private router: Router,
@@ -31,6 +32,12 @@ export class RecordEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     const id = this.route.snapshot.paramMap.get('id')!;
     const eventId = parseInt(this.route.snapshot.paramMap.get('eventid')!);
     this.userId = this.route.snapshot.paramMap.get('userid')!;

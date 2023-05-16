@@ -3,6 +3,7 @@ import {PageEvent} from "@angular/material/paginator";
 import {RecordsService} from "../../services/records.service";
 import {UsersService} from "../../services/users.service";
 import {RecordRow} from "./recordRow";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-records',
@@ -20,14 +21,23 @@ export class RecordsComponent implements OnInit {
   users: any;
   selectedUser: any;
   data: any[] = [];
+  userData: any;
 
   constructor(
     private recordsService: RecordsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
+
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     this.usersService.getUsers().subscribe(
       (users) => {
         this.users = users;

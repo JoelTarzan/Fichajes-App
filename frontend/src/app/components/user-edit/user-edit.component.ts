@@ -14,6 +14,7 @@ export class UserEditComponent implements OnInit {
 
   user: any;
   form!: FormGroup;
+  userData: any;
 
   constructor(
     private router: Router,
@@ -24,6 +25,12 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     const id = this.route.snapshot.paramMap.get('id')!;
 
     this.usersService.getUserById(id).subscribe(

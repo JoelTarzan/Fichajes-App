@@ -19,6 +19,7 @@ export class EventEditComponent implements OnInit {
   sickLeave: any;
   vacation: any;
   form!: FormGroup;
+  userData: any;
 
   constructor(
     private router: Router,
@@ -30,6 +31,13 @@ export class EventEditComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     const eventId = parseInt(this.route.snapshot.paramMap.get('id')!);
 
     this.eventsService.getEventById(eventId).subscribe(

@@ -12,6 +12,7 @@ import {Location} from "@angular/common";
 export class UserCreateComponent implements OnInit {
 
   form!: FormGroup;
+  userData: any;
 
   constructor(
     private authService: AuthService,
@@ -20,6 +21,12 @@ export class UserCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     this.initForm();
   }
 

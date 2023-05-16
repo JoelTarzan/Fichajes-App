@@ -14,6 +14,7 @@ export class ScheduleEditComponent implements OnInit {
 
   schedule: any;
   form!: FormGroup;
+  userData: any;
 
   constructor(
     private router: Router,
@@ -24,6 +25,12 @@ export class ScheduleEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
 
     this.schedulesService.getScheduleById(id).subscribe(

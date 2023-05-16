@@ -22,6 +22,7 @@ export class EventCreateComponent implements OnInit {
   holiday: any;
   sickLeave: any;
   vacation: any;
+  userData: any;
 
   constructor(
     private location: Location,
@@ -34,6 +35,12 @@ export class EventCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user')!);
+
+    if (!this.userData.isAdmin) {
+      this.router.navigate(['']);
+    }
+
     this.usersService.getUsers().subscribe(
       (users) => {
         this.users = users;
