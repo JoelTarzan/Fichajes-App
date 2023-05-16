@@ -4,6 +4,7 @@ import {Record} from "./entities/record.entity";
 import {Repository} from "typeorm";
 import {CreateRecordDto} from "./dto/create-record.dto";
 import {UpdateRecordDto} from "./dto/update-record.dto";
+import { format, startOfDay, parseISO } from 'date-fns';
 
 @Injectable()
 export class RecordsService {
@@ -42,6 +43,26 @@ export class RecordsService {
                }
            }
         });
+    }
+
+    async getRecordByUserToday(id: string) {
+
+        const date = startOfDay(new Date());
+
+        const recordFound = await this.recordRepository.findOne({
+           where: {
+               user: {
+                   id
+               },
+               date
+           }
+        });
+
+        if (!recordFound) {
+            throw new HttpException('Registro no encontrado', HttpStatus.NOT_FOUND);
+        }
+
+        return recordFound;
     }
 
     async createRecord(record: CreateRecordDto) {

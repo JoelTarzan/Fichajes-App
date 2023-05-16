@@ -5,6 +5,7 @@ import {Event} from "./entities/event.entity";
 import {CreateEventDto} from "./dto/create-event.dto";
 import {SchedulesService} from "../schedules/schedules.service";
 import {UpdateEventDto} from "./dto/update-event.dto";
+import {startOfDay} from "date-fns";
 
 @Injectable()
 export class EventsService {
@@ -58,6 +59,26 @@ export class EventsService {
                 vacation: false
             }
         });
+    }
+
+    async getRecordByUserToday(id: string) {
+
+        const date = startOfDay(new Date());
+
+        const eventFound = await this.eventRepository.findOne({
+            where: {
+                user: {
+                    id
+                },
+                date
+            }
+        });
+
+        if (!eventFound) {
+            throw new HttpException('Evento no encontrado', HttpStatus.NOT_FOUND);
+        }
+
+        return eventFound;
     }
 
     async createEvent(event: CreateEventDto) {

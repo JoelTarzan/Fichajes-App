@@ -25,6 +25,11 @@ export class RecordsController {
         return this.recordsService.getRecordsByUser(id);
     }
 
+    @Get('today/:id')
+    getRecordByUserToday(@Param('id') id: string) {
+        return this.recordsService.getRecordByUserToday(id);
+    }
+
     @Post()
     createRecord(@Body() newRecord: CreateRecordDto): Promise<Record> {
         return this.recordsService.createRecord(newRecord);
