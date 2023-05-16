@@ -39,6 +39,10 @@ export class RecordsService {
     );
   }
 
+  getRecordByUserToday(id: string) {
+    return this.http.get(this.endpoint + '/records/today/' + id);
+  }
+
   getRecordsById(id: string): Observable<any> {
     return this.http.get(this.endpoint + '/records/' + id);
   }

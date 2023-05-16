@@ -1,1 +1,15 @@
-<p>clockin works!</p>
+<div>
+  <h2>Hora actual: {{ currentTime | date:'HH:mm:ss' }}</h2>
+  <h2>Fecha actual: {{ currentTime | date:'dd/MM/yyyy' }}</h2>
+
+  <button mat-raised-button color="primary" (click)="clockIn()" [disabled]="!clockInButtonEnabled">Fichar</button>
+  <button mat-raised-button color="warn" (click)="clockOut()" [disabled]="!clockOutButtonEnabled">Desfichar</button>
+
+  <br /><br />
+
+  <button mat-raised-button color="primary" (click)="startBreakTime()" [disabled]="!startBreakTimeButtonEnabled">Empezar pausa</button>
+  <button mat-raised-button color="warn" (click)="stopBreakTime()" [disabled]="!endBreakTimeButtonEnabled">Parar pausa</button>
+
+  <h3>Tiempo de pausa registrado hoy: {{ totalBreakTimeMinutes }} minutos</h3>
+  <p>{{ message }}</p>
+</div>
