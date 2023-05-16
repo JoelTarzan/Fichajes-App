@@ -4,6 +4,7 @@ import {RecordsService} from "../../services/records.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EventsService} from "../../services/events.service";
 import {DatePipe, Location} from "@angular/common";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-record-edit',
@@ -25,7 +26,8 @@ export class RecordEditComponent implements OnInit {
     private recordsService: RecordsService,
     private eventsService: EventsService,
     private location: Location,
-    private datePipe: DatePipe) {
+    public datePipe: DatePipe,
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -36,7 +38,7 @@ export class RecordEditComponent implements OnInit {
     this.eventsService.getEventById(eventId).subscribe(
       (event) => {
         this.event = event;
-        this.date = this.datePipe.transform(this.event.date, 'dd-MM-yyyy');
+        this.date = this.event.date;
 
         if (id == 'undefined') {
           this.mode = 'create';
@@ -73,7 +75,7 @@ export class RecordEditComponent implements OnInit {
 
     this.form = new FormGroup({
       entry: new FormControl(this.record.entry.slice(0, -3), [Validators.required, Validators.pattern(timePattern)]),
-      exit: new FormControl(this.record.exit.slice(0, -3), Validators.pattern(timePattern)),
+      exit: new FormControl(this.record.exit ? this.record.exit.slice(0, -3) : null, Validators.pattern(timePattern)),
       breakTimeMinutes: new FormControl(this.record.breakTimeMinutes)
     });
   }
@@ -84,10 +86,53 @@ export class RecordEditComponent implements OnInit {
 
   save() {
 
+    if (this.mode == 'create') {
+
+      const record = {
+        date: this.date,
+        user: this.userId,
+        entry: this.form.get('entry')?.value,
+        exit: this.form.get('exit')?.value,
+        breakTimeMinutes: this.form.get('breakTimeMinutes')?.value
+      }
+
+      this.recordsService.createRecord(record).subscribe(
+        () => {
+          this.router.navigate(['/records']);
+          this.snackBar.open('Registro creado correctamente', 'Cerrar', {
+            duration: 2000,
+          });
+        }
+      );
+
+    } else {
+
+      const record = {
+        entry: this.form.get('entry')?.value,
+        exit: this.form.get('exit')?.value ? this.form.get('exit')?.value : null,
+        breakTimeMinutes: this.form.get('breakTimeMinutes')?.value
+      }
+
+      this.recordsService.updateRecord(this.record.id, record).subscribe(
+        () => {
+          this.snackBar.open('Registro actualizado correctamente', 'Cerrar', {
+            duration: 2000,
+          });
+        }
+      );
+    }
+
   }
 
   delete() {
-
+    this.recordsService.deleteRecord(this.record.id).subscribe(
+      () => {
+        this.router.navigate(['/records']);
+        this.snackBar.open('Registro eliminado correctamente', 'Cerrar', {
+          duration: 2000,
+        });
+      }
+    );
   }
 
 }

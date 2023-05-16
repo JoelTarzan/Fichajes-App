@@ -8,7 +8,7 @@
 
     <div class="data-container">
       <h4>Fecha</h4>
-      <p *ngIf="event">{{ date }}</p>
+      <p *ngIf="event">{{ datePipe.transform(date, 'dd-MM-yyyy') }}</p>
     </div>
 
     <div class="time-container">

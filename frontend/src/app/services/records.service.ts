@@ -37,6 +37,18 @@ export class RecordsService {
     return this.http.get(this.endpoint + '/records/' + id);
   }
 
+  createRecord(record: any): Observable<any> {
+    return this.http.post(this.endpoint + '/records', record);
+  }
+
+  updateRecord(id: number, record: any): Observable<any> {
+    return this.http.patch(this.endpoint + '/records/' + id, record);
+  }
+
+  deleteRecord(id: number): Observable<any> {
+    return this.http.delete(this.endpoint + '/records/' + id);
+  }
+
   private formatEvents(events: any[]): RecordRow[] {
     return events.map(event => ({
       eventId: event.id,
