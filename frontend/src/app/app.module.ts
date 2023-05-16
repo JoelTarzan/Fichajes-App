@@ -36,6 +36,8 @@ import { EventCreateComponent } from './components/event-create/event-create.com
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { RecordsComponent } from './components/records/records.component';
 import { RecordEditComponent } from './components/record-edit/record-edit.component';
+import { ClockinComponent } from './components/clockin/clockin.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { RecordEditComponent } from './components/record-edit/record-edit.compon
     EventEditComponent,
     EventCreateComponent,
     RecordsComponent,
-    RecordEditComponent
+    RecordEditComponent,
+    ClockinComponent,
+    ChangepasswordComponent
   ],
     imports: [
         BrowserModule,
