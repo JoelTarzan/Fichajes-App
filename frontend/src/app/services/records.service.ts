@@ -22,13 +22,19 @@ export class RecordsService {
         const formattedEvents: RecordRow[] = this.formatEvents(eventsResult);
         const formattedRecords: RecordRow[] = this.formatRecords(recordsResult);
 
-        return formattedEvents.map(event => ({
+        const recordsWithId = formattedEvents.map(event => ({
           ...event,
           id: this.searchId(formattedRecords, event.date),
           entry: this.searchEntry(formattedRecords, event.date),
           exit: this.searchExit(formattedRecords, event.date),
           breakTimeMinutes: this.searchBreakTimeMinutes(formattedRecords, event.date)
         }));
+
+        return recordsWithId.sort((a, b) => {
+          const dateA = new Date(a.date!);
+          const dateB = new Date(b.date!);
+          return dateA.getTime() - dateB.getTime();
+        });
       })
     );
   }
