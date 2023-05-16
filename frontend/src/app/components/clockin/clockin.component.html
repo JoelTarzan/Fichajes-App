@@ -1,15 +1,30 @@
-<div>
-  <h2>Hora actual: {{ currentTime | date:'HH:mm:ss' }}</h2>
-  <h2>Fecha actual: {{ currentTime | date:'dd/MM/yyyy' }}</h2>
+<div class="container">
 
-  <button mat-raised-button color="primary" (click)="clockIn()" [disabled]="!clockInButtonEnabled">Fichar</button>
-  <button mat-raised-button color="warn" (click)="clockOut()" [disabled]="!clockOutButtonEnabled">Desfichar</button>
+  <div class="header">
 
-  <br /><br />
+    <div class="date">
+      {{ currentTime | date:'dd/MM/yyyy' }}
+    </div>
 
-  <button mat-raised-button color="primary" (click)="startBreakTime()" [disabled]="!startBreakTimeButtonEnabled">Empezar pausa</button>
-  <button mat-raised-button color="warn" (click)="stopBreakTime()" [disabled]="!endBreakTimeButtonEnabled">Parar pausa</button>
+    <div class="time">
+      {{ currentTime | date:'HH:mm:ss' }}
+    </div>
 
-  <h3>Tiempo de pausa registrado hoy: {{ totalBreakTimeMinutes }} minutos</h3>
-  <p>{{ message }}</p>
+  </div>
+
+  <div class="container-clocks">
+    <button mat-raised-button class="clockin-button" (click)="clockIn()" [disabled]="!clockInButtonEnabled">Fichar</button>
+    <button mat-raised-button class="clockout-button" (click)="clockOut()" [disabled]="!clockOutButtonEnabled">Desfichar</button>
+  </div>
+
+  <div class="container-breaks">
+    <button mat-raised-button class="startbreak-button" (click)="startBreakTime()" [disabled]="!startBreakTimeButtonEnabled">Empezar pausa</button>
+    <button mat-raised-button class="stopbreak-button" (click)="stopBreakTime()" [disabled]="!endBreakTimeButtonEnabled">Parar pausa</button>
+  </div>
+
+  <div class="container-timeBreak">
+    <p class="timeBreak">Tiempo de pausa registrado hoy: {{ totalBreakTimeMinutes }} minutos</p>
+    <p class="message">{{ message }}</p>
+  </div>
+
 </div>

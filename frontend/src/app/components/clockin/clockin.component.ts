@@ -185,6 +185,7 @@ export class ClockinComponent implements OnInit {
 
     this.startBreakTimeButtonEnabled = false;
     this.endBreakTimeButtonEnabled = true;
+    this.clockOutButtonEnabled = false;
   }
 
   stopBreakTime() {
@@ -211,6 +212,7 @@ export class ClockinComponent implements OnInit {
 
     this.startBreakTimeButtonEnabled = true;
     this.endBreakTimeButtonEnabled = false;
+    this.clockOutButtonEnabled = true;
   }
 
   calculateBreakTimeMinutes() {

@@ -1,0 +1,109 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.container {
+  width: 40%;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  font-size: 4rem;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  font-size: 2rem;
+}
+
+button {
+  margin: 1rem 3rem;
+  width: 270px;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+.container-clocks, .container-breaks {
+  display: flex;
+  justify-content: center;
+}
+
+.clockin-button {
+  background-color: #A2B29F;
+}
+
+.clockout-button {
+  background-color: #d88c8c;
+}
+
+.startbreak-button {
+  background-color: #99ead3;
+}
+
+.stopbreak-button {
+  background-color: #c3af84;
+}
+
+.container-timeBreak {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.timeBreak {
+  font-size: 1.5rem;
+}
+
+.message {
+
+}
+
+@media (max-width: 720px) {
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container-clocks, .container-breaks {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .date {
+    margin: 1rem 0;
+    font-size: 3rem;
+  }
+
+  .time {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+  }
+
+  .timeBreak {
+    font-size: 1.2rem;
+  }
+
+  .message {
+    font-size: 0.8rem;
+  }
+}
