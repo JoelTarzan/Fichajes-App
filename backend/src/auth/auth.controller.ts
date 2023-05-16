@@ -24,4 +24,8 @@ export class AuthController {
         return this.authService.superAdminExists();
     }
 
+    @Post('/verifypassword')
+    verifyPassword(@Body() user: LoginAuthDto): Promise<boolean> {
+        return this.authService.verifyPassword(user);
+    }
 }

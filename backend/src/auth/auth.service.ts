@@ -58,4 +58,17 @@ export class AuthService {
         return await this.usersService.superAdminExists();
     }
 
+    async verifyPassword(user: LoginAuthDto): Promise<boolean> {
+
+        const { email, password } = user;
+        const findUser = await this.usersService.getOneUserByEmail(email);
+
+        try {
+            return await compare(password, findUser.password);
+        } catch (error) {
+
+            return false;
+        }
+    }
+
 }

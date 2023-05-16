@@ -5,6 +5,7 @@ import {Repository} from "typeorm";
 import {CreateUserDto} from "./dto/create-user.dto";
 import {UpdateUserDto} from "./dto/update-user.dto";
 import {RegisterAuthDto} from "../auth/dto/register-auth.dto";
+import {hash} from "bcrypt";
 
 @Injectable()
 export class UsersService {
@@ -102,6 +103,13 @@ export class UsersService {
 
         if (!userFound) {
             throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
+        }
+
+        if (user.password) {
+            const { password } = user;
+            const plainToHash = await hash(password, 10);
+
+            user = {...user, password:plainToHash};
         }
 
         return this.userRepository.update({ id }, user);
