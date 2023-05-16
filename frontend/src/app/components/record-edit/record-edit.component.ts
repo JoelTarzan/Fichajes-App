@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RecordsService} from "../../services/records.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EventsService} from "../../services/events.service";
+import {DatePipe, Location} from "@angular/common";
 
 @Component({
   selector: 'app-record-edit',
@@ -22,7 +23,9 @@ export class RecordEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private recordsService: RecordsService,
-    private eventsService: EventsService) {
+    private eventsService: EventsService,
+    private location: Location,
+    private datePipe: DatePipe) {
   }
 
   ngOnInit() {
@@ -33,7 +36,7 @@ export class RecordEditComponent implements OnInit {
     this.eventsService.getEventById(eventId).subscribe(
       (event) => {
         this.event = event;
-        this.date = this.event.date;
+        this.date = this.datePipe.transform(this.event.date, 'dd-MM-yyyy');
 
         if (id == 'undefined') {
           this.mode = 'create';
@@ -45,22 +48,46 @@ export class RecordEditComponent implements OnInit {
           this.recordsService.getRecordsById(id).subscribe(
             (record) => {
               this.record = record;
-              //TODO initFormEdit
+              this.initFormEdit();
             }
           );
-
         }
+
       }
     );
 
   }
 
   initFormCreate(): void {
-    this.form = new FormGroup({
-      entry: new FormControl(''),
-      exit: new FormControl(''),
+    const timePattern = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
 
+    this.form = new FormGroup({
+      entry: new FormControl('', [Validators.required, Validators.pattern(timePattern)]),
+      exit: new FormControl(null, Validators.pattern(timePattern)),
+      breakTimeMinutes: new FormControl(0)
     });
+  }
+
+  initFormEdit(): void {
+    const timePattern = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+
+    this.form = new FormGroup({
+      entry: new FormControl(this.record.entry.slice(0, -3), [Validators.required, Validators.pattern(timePattern)]),
+      exit: new FormControl(this.record.exit.slice(0, -3), Validators.pattern(timePattern)),
+      breakTimeMinutes: new FormControl(this.record.breakTimeMinutes)
+    });
+  }
+
+  back() {
+    this.location.back();
+  }
+
+  save() {
+
+  }
+
+  delete() {
+
   }
 
 }

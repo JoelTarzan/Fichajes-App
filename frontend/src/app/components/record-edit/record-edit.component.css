@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+button {
+  margin: 0 0.5rem;
+}
+
+.container {
+  width: 40%;
+  margin: 3rem auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 10px 0;
+}
+
+mat-label {
+  color: #798777;
+}
+
+.back-button {
+  background-color: #BDD2B6;
+  margin: 1rem 0 0 1rem;
+}
+
+.container-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  background-color: #798777;
+}
+
+.deleteButton {
+  background-color: #c30000;
+  color: white;
+}
+
+.colorWhite {
+  color: white;
+}

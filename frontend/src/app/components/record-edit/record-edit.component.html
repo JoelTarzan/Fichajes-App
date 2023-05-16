@@ -1,1 +1,40 @@
-<p>record-edit works!</p>
+<button mat-raised-button class="back-button" (click)="back()">Volver atrás</button>
+
+<div class="container">
+
+  <h2 class="title">Editar registro</h2>
+
+  <form [formGroup]="form" *ngIf="form">
+
+    <div class="data-container">
+      <h4>Fecha</h4>
+      <p *ngIf="event">{{ date }}</p>
+    </div>
+
+    <div class="time-container">
+
+      <mat-form-field class="hour-container">
+        <mat-label>Hora Entrada</mat-label>
+        <input matInput formControlName="entry">
+      </mat-form-field>
+
+      <mat-form-field class="hour-container">
+        <mat-label>Hora Salida</mat-label>
+        <input matInput formControlName="exit">
+      </mat-form-field>
+
+      <mat-form-field class="hour-container">
+        <mat-label>Tiempo de descanso en minutos</mat-label>
+        <input matInput type="number" formControlName="breakTimeMinutes">
+      </mat-form-field>
+
+    </div>
+
+    <div class="container-buttons">
+      <button mat-raised-button *ngIf="mode == 'edit'" class="deleteButton" (click)="delete()">Eliminar</button>
+      <button mat-raised-button [disabled]="form.invalid" class="submitButton" [ngClass]="{'colorWhite': form.valid}" (click)="save()">Guardar</button>
+    </div>
+
+  </form>
+
+</div>
