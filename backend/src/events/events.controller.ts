@@ -21,17 +21,17 @@ export class EventsController {
     }
 
     @Get('all/:id')
-    getEventsByUser(@Param('id') id: string): Promise<Event[]> {
+    getEventsByUser(@Param('id', ParseIntPipe) id: number): Promise<Event[]> {
         return this.eventsService.getEventsByUser(id);
     }
 
     @Get('workdays/:id')
-    getWorkDaysByUser(@Param('id') id: string): Promise<Event[]> {
+    getWorkDaysByUser(@Param('id', ParseIntPipe) id: number): Promise<Event[]> {
         return this.eventsService.getWorkDaysByUser(id);
     }
 
     @Get('today/:id')
-    getRecordByUserToday(@Param('id') id: string) {
+    getRecordByUserToday(@Param('id', ParseIntPipe) id: number) {
         return this.eventsService.getRecordByUserToday(id);
     }
 

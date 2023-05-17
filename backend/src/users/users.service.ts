@@ -20,7 +20,7 @@ export class UsersService {
         return this.userRepository.find();
     }
 
-    async getOneUser(id: string) {
+    async getOneUser(id: number) {
 
         const userFound = await this.userRepository.findOne({
             where: {
@@ -78,7 +78,7 @@ export class UsersService {
         return this.userRepository.save(newUser);
     }
 
-    async deleteUser(id: string) {
+    async deleteUser(id: number) {
 
         const userFound = await this.userRepository.findOne({
             where: {
@@ -93,7 +93,7 @@ export class UsersService {
         return this.userRepository.delete({ id });
     }
 
-    async updateUser(id: string, user: UpdateUserDto) {
+    async updateUser(id: number, user: UpdateUserDto) {
 
         const userFound = await this.userRepository.findOne({
             where: {

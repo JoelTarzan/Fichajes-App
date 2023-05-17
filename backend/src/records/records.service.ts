@@ -34,7 +34,7 @@ export class RecordsService {
         return recordFound;
     }
 
-    async getRecordsByUser(id: string) {
+    async getRecordsByUser(id: number) {
 
         return await this.recordRepository.find({
            where: {
@@ -45,7 +45,7 @@ export class RecordsService {
         });
     }
 
-    async getRecordByUserToday(id: string) {
+    async getRecordByUserToday(id: number) {
 
         const date = startOfDay(new Date());
 

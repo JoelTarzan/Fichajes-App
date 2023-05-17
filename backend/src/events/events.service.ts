@@ -36,7 +36,7 @@ export class EventsService {
         return eventFound;
     }
 
-    async getEventsByUser(id: string) {
+    async getEventsByUser(id: number) {
 
         return await this.eventRepository.find({
             where: {
@@ -47,7 +47,7 @@ export class EventsService {
         });
     }
 
-    async getWorkDaysByUser(id: string) {
+    async getWorkDaysByUser(id: number) {
 
         return await this.eventRepository.find({
             where: {
@@ -61,7 +61,7 @@ export class EventsService {
         });
     }
 
-    async getRecordByUserToday(id: string) {
+    async getRecordByUserToday(id: number) {
 
         const date = startOfDay(new Date());
 

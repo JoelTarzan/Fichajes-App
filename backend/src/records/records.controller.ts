@@ -21,12 +21,12 @@ export class RecordsController {
     }
 
     @Get('all/:id')
-    getRecordsByUser(@Param('id') id: string): Promise<Record[]> {
+    getRecordsByUser(@Param('id', ParseIntPipe) id: number): Promise<Record[]> {
         return this.recordsService.getRecordsByUser(id);
     }
 
     @Get('today/:id')
-    getRecordByUserToday(@Param('id') id: string) {
+    getRecordByUserToday(@Param('id', ParseIntPipe) id: number) {
         return this.recordsService.getRecordByUserToday(id);
     }
 

@@ -5,8 +5,8 @@ import {Event} from "../../events/entities/event.entity";
 @Entity('users')
 export class User {
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+    @PrimaryGeneratedColumn()
+    id: number
 
     @Column()
     name: string
