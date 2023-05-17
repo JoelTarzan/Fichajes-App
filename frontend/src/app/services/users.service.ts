@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class UsersService {
 
-  endpoint: string = 'joeltarzan.es:3000';
+  endpoint: string = 'https://backfichajes.joeltarzan.es';
 
   constructor(private http: HttpClient) { }
 
