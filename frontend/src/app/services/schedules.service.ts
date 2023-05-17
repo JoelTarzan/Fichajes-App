@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class SchedulesService {
 
-  endpoint: string = 'http://localhost:3000';
+  endpoint: string = 'joeltarzan.es:3000';
   constructor(private http: HttpClient) { }
 
   getSchedules(): Observable<any> {

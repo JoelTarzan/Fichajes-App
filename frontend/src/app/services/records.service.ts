@@ -9,7 +9,7 @@ import { RecordRow } from "../components/records/recordRow";
 })
 export class RecordsService {
 
-  endpoint: string = 'http://localhost:3000';
+  endpoint: string = 'joeltarzan.es:3000';
 
   constructor(private http: HttpClient) { }
 

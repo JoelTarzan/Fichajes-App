@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class AuthService {
 
-  endpoint: string = 'http://localhost:3000';
+  endpoint: string = 'joeltarzan.es:3000';
 
   constructor(private http: HttpClient) { }
 
